@@ -1,0 +1,6 @@
+{
+  "name": "task-manager",
+  "workspaceFolder": "/app",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached",
+  "image": "node:alpine3.17"
+}
