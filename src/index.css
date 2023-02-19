@@ -14,12 +14,12 @@
   h4,
   h5,
   h6,
-  span,
   a {
     @apply font-archivo;
   }
 
-  p {
+  p,
+  span {
     @apply font-opensans;
   }
 }
