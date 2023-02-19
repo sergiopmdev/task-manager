@@ -3,7 +3,7 @@ import Header from "../components/Shared/Header";
 function Register() {
   return (
     <>
-      <Header />
+      <Header page="register" />
     </>
   );
 }
