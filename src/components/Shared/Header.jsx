@@ -4,16 +4,25 @@ import Burger from "./Burger";
 import DefaultResponsiveNav from "./DefaultResponsiveNav";
 import { useEffect, useState } from "react";
 import addWidthListener from "../../utilities/addWidthListener";
+import addScrollListener from "../../utilities/addScrollListener";
 
 function Header(props) {
   const [responsiveNav, setResponsiveNav] = useState(false);
+  const [activeHeader, setActiveHeader] = useState(false);
 
   useEffect(() => {
     addWidthListener(768, setResponsiveNav);
+    addScrollListener(setActiveHeader);
   }, []);
 
   return (
-    <header className="flex h-20 w-full items-center justify-center">
+    <header
+      className={`sticky top-0 flex ${
+        activeHeader ? "h-20" : "h-24"
+      } w-full items-center justify-center transition-[height,background-color] duration-200 ${
+        activeHeader && "bg-extra-dark-blue"
+      }`}
+    >
       <div className="mx-auto flex h-full w-full max-w-screen-2xl items-center justify-between px-5">
         <Logo appName="Task Manager" />
         <DefaultNav page={props.page} />
