@@ -1,4 +1,7 @@
 import { useForm } from "react-hook-form";
+import Input from "../Shared/Input";
+import FormSubmit from "../Shared/FormSubmit";
+import FormTitle from "../Shared/FormTitle";
 
 function RegisterForm() {
   const {
@@ -15,60 +18,36 @@ function RegisterForm() {
         className="mx-auto flex w-[35rem] flex-col justify-center rounded-md bg-extra-dark-blue py-8 px-10"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="text-center text-4xl">Sign Up</h1>
-        <div className="relative flex flex-col">
-          {errors.name && (
-            <div className="absolute top-3 right-0 rounded-sm bg-error-color py-1 px-2 text-xs">
-              Minimum 4 characters
-            </div>
-          )}
-          <label className="mt-4 mb-1">Name</label>
-          <input
-            className="h-9 rounded-md"
-            {...register("name", {
-              required: true,
-              pattern: /^.{4,}$/i,
-            })}
-          ></input>
-        </div>
-        <div className="relative flex flex-col">
-          {errors.email && (
-            <div className="absolute top-3 right-0 rounded-sm bg-error-color py-1 px-2 text-xs">
-              Invalid type of email
-            </div>
-          )}
-          <label className="mt-4 mb-1">Email</label>
-          <input
-            className="h-9 rounded-md"
-            {...register("email", {
-              required: true,
-              pattern:
-                /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i,
-            })}
-          ></input>
-        </div>
-        <div className="relative flex flex-col">
-          {errors.password && (
-            <div className="absolute top-3 right-0 rounded-sm bg-error-color py-1 px-2 text-xs">
-              Minimum 8 characters
-            </div>
-          )}
-          <label className="mt-4 mb-1">Password</label>
-          <input
-            className="h-9 rounded-md"
-            type={"password"}
-            {...register("password", {
-              required: true,
-              pattern: /^.{8,}$/i,
-            })}
-          ></input>
-        </div>
-        <button
-          className="mt-8 h-10 rounded-md bg-medium-blue text-lg transition-colors hover:bg-medium-blue/[.9]"
-          type="submit"
-        >
-          Send
-        </button>
+        <FormTitle title="Sign Up" />
+        <Input
+          label="Name"
+          dataHook={register("name", { required: true, pattern: /^.{4,}$/i })}
+          error={errors.name}
+          errorMessage="Minimum 4 characters"
+        />
+
+        <Input
+          label="Email"
+          type="email"
+          dataHook={register("email", {
+            required: true,
+            pattern:
+              /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i,
+          })}
+          error={errors.email}
+          errorMessage="Invalid email"
+        />
+        <Input
+          label="Password"
+          type="password"
+          dataHook={register("password", {
+            required: true,
+            pattern: /^.{8,}$/i,
+          })}
+          error={errors.password}
+          errorMessage="Minimum 8 characters"
+        />
+        <FormSubmit action="Send" />
       </form>
     </div>
   );
