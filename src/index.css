@@ -15,6 +15,9 @@
   h5,
   h6,
   a,
+  button,
+  label,
+  input,
   li {
     @apply font-archivo;
   }
@@ -22,5 +25,11 @@
   p,
   span {
     @apply font-opensans;
+  }
+
+  input {
+    @apply text-extra-dark-blue;
+    @apply outline-0;
+    @apply pl-2;
   }
 }

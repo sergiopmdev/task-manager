@@ -9,6 +9,7 @@ module.exports = {
       "light-blue": "#A8DADC",
       "off-white": "#F1FAEE",
       "standard-red": "#E63946",
+      "error-color": "#EF4444",
     },
     fontFamily: {
       archivo: ["Archivo", "sans-serif"],
