@@ -1,6 +1,7 @@
 import Input from "../Shared/Input";
 import FormSubmit from "../Shared/FormSubmit";
 import FormTitle from "../Shared/FormTitle";
+import Error from "../Shared/Error";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import postUser from "../../services/postUser";
@@ -23,9 +24,7 @@ function RegisterForm() {
         onSubmit={handleSubmit(onSubmit)}
       >
         {registerStatus == 409 && (
-          <div className="absolute top-3 right-0 rounded-sm bg-error-color py-1 px-2 text-xs">
-            User already exists
-          </div>
+          <Error message="User already exists" customCSS="mr-3" />
         )}
         <FormTitle title="Sign Up" />
         <Input

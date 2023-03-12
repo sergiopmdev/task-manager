@@ -1,11 +1,9 @@
+import Error from "./Error";
+
 function Input(props) {
   return (
     <div className="relative flex flex-col">
-      {props.error && (
-        <div className="absolute top-3 right-0 rounded-sm bg-error-color py-1 px-2 text-xs">
-          {props.errorMessage}
-        </div>
-      )}
+      {props.error && <Error message={props.errorMessage} />}
       <label className="mt-4 mb-1">{props.label}</label>
       <input
         type={props.type && props.type}
