@@ -2,6 +2,7 @@ import Input from "../Shared/Input";
 import FormSubmit from "../Shared/FormSubmit";
 import FormTitle from "../Shared/FormTitle";
 import Error from "../Shared/Error";
+import Success from "../Shared/Success";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import postUser from "../../services/postUser";
@@ -25,6 +26,9 @@ function RegisterForm() {
       >
         {registerStatus == 409 && (
           <Error message="User already exists" customCSS="mr-3" />
+        )}
+        {registerStatus == 201 && (
+          <Success message="Account created" customCSS="mr-3" />
         )}
         <FormTitle title="Sign Up" />
         <Input
@@ -55,7 +59,7 @@ function RegisterForm() {
           error={errors.password}
           errorMessage="Minimum 8 characters"
         />
-        <FormSubmit action="Send" />
+        <FormSubmit action="Send" status={registerStatus} />
       </form>
     </div>
   );

@@ -10,6 +10,7 @@ module.exports = {
       "off-white": "#F1FAEE",
       "standard-red": "#E63946",
       "error-color": "#EF4444",
+      "success-color": "#22c55e",
     },
     fontFamily: {
       archivo: ["Archivo", "sans-serif"],
