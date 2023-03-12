@@ -5,10 +5,13 @@ import Error from "../Shared/Error";
 import Success from "../Shared/Success";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import postUser from "../../services/postUser";
 
 function RegisterForm() {
   const [registerStatus, setRegisterStatus] = useState();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -16,7 +19,17 @@ function RegisterForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => postUser(data, setRegisterStatus);
+  useEffect(() => {
+    if (registerStatus == 201) {
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000);
+    }
+  }, [registerStatus]);
+
+  async function onSubmit(data) {
+    await postUser(data, setRegisterStatus);
+  }
 
   return (
     <div className="flex h-[calc(100vh-6rem)] w-screen items-center justify-center">
