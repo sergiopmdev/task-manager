@@ -32,9 +32,9 @@ function RegisterForm() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-6rem)] w-screen items-center justify-center">
+    <div className="mt-10 flex h-auto w-screen items-center justify-center md:mt-0 md:h-[calc(100vh-6rem)]">
       <form
-        className="relative mx-auto flex w-[35rem] flex-col justify-center rounded-md bg-extra-dark-blue py-8 px-10"
+        className="relative mx-auto flex w-11/12 flex-col justify-center rounded-md bg-extra-dark-blue py-8 px-5 md:w-[35rem] md:px-10"
         onSubmit={handleSubmit(onSubmit)}
       >
         {registerStatus == 409 && (

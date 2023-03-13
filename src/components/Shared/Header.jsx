@@ -17,7 +17,7 @@ function Header(props) {
 
   return (
     <header
-      className={`sticky top-0 flex ${
+      className={`sticky top-0 z-10 flex ${
         activeHeader ? "h-20" : "h-24"
       } w-full items-center justify-center transition-[height,background-color] duration-200 ${
         activeHeader && "bg-extra-dark-blue"

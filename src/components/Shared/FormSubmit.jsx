@@ -9,7 +9,7 @@ function FormSubmit(props) {
       disabled={disabledStatus}
       className={`${
         disabledStatus && "cursor-not-allowed opacity-50"
-      } mt-8 h-10 rounded-md bg-medium-blue text-lg transition-colors enabled:hover:bg-medium-blue/[.9]`}
+      } mt-8 h-10 rounded-md bg-medium-blue text-base transition-colors enabled:hover:bg-medium-blue/[.9] md:text-lg`}
       type="submit"
     >
       <div className="flex items-center justify-center gap-2">
