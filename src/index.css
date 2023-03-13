@@ -1,3 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-blue;
+    @apply text-off-white;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  a,
+  button,
+  label,
+  input,
+  li {
+    @apply font-archivo;
+  }
+
+  p,
+  span {
+    @apply font-opensans;
+  }
+
+  input {
+    @apply text-extra-dark-blue;
+    @apply outline-0;
+    @apply pl-2;
+  }
+}
