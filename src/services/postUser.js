@@ -1,8 +1,10 @@
-async function postUser(user, setState) {
+function postUser(user, setLoading, setState) {
   /**
    * Create user in database and update
    * state with status code of request
    */
+
+  setLoading(true);
 
   const postOptions = {
     method: "POST",
@@ -10,10 +12,11 @@ async function postUser(user, setState) {
     body: JSON.stringify(user),
   };
 
-  setState(undefined);
-
-  await fetch(`${import.meta.env.VITE_API_BASE_URL}/users`, postOptions).then(
+  fetch(`${import.meta.env.VITE_API_BASE_URL}/users`, postOptions).then(
     (response) => {
+      if (response.status != 201) {
+        setLoading(false);
+      }
       return setState(response.status);
     }
   );

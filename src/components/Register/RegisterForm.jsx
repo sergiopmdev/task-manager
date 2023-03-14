@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import postUser from "../../services/postUser";
 
 function RegisterForm() {
+  const [loading, setLoading] = useState();
   const [registerStatus, setRegisterStatus] = useState();
   const navigate = useNavigate();
 
@@ -27,8 +28,8 @@ function RegisterForm() {
     }
   }, [registerStatus]);
 
-  async function onSubmit(data) {
-    await postUser(data, setRegisterStatus);
+  function onSubmit(data) {
+    postUser(data, setLoading, setRegisterStatus);
   }
 
   return (
@@ -47,6 +48,7 @@ function RegisterForm() {
         <Input
           label="Name"
           dataHook={register("name", { required: true, pattern: /^.{4,}$/i })}
+          loading={loading}
           error={errors.name}
           errorMessage="Minimum 4 characters"
         />
@@ -59,6 +61,7 @@ function RegisterForm() {
             pattern:
               /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/i,
           })}
+          loading={loading}
           error={errors.email}
           errorMessage="Invalid email"
         />
@@ -69,10 +72,11 @@ function RegisterForm() {
             required: true,
             pattern: /^.{8,}$/i,
           })}
+          loading={loading}
           error={errors.password}
           errorMessage="Minimum 8 characters"
         />
-        <FormSubmit action="Send" status={registerStatus} />
+        <FormSubmit action="Send" status={registerStatus} loading={loading} />
       </form>
     </div>
   );
